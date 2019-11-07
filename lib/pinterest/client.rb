@@ -51,6 +51,10 @@ module Pinterest
         case method
         when :get
           path = path + "?access_token=" + @access_token
+          cursor = options.delete(:cursor)
+          if cursor.present?
+            path = path + "&cursor=" + cursor
+          end
           request.url(URI.encode(path), options)
         when :patch
           request.path = path + "?access_token=" + @access_token

@@ -18,6 +18,11 @@ module Pinterest
         delete("boards/#{id}")
       end
 
+      def get_board_pins(id, cursor = nil, options={})
+        options[:cursor] = cursor if cursor.present?
+        get("boards/#{id}/pins", options)
+      end
+
     end
   end
 end
